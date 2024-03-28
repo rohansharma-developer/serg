@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Statements formatting  
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+YELLOW='\033[1;33m'
+
+print_messege() {
+  echo -ne "$1$2${NC}"
+}
+
+# Compatibility check 
+check() {
+  # init check 
+  if [[ ! -e /etc/systemd ]]; then
+    print_messege $GREEN "Error: The current system is not equipied with systemd \n"
+    exit 0;
+  fi
+  # Distro check 
+  if [[ -e /etc/yum.repos.d ]]; then
+   distro=rhel
+  elif [[ -e /etc/sources.d ]]; then
+    distro=debian
+  elif [[ -e /etc/packman.d ]]; then
+    distro=arch
+  else
+    distro=other
+    # print_messege $YELLOW "Warning: Distro might not be supported \n"
+  fi
+}
+
+
