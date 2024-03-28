@@ -30,4 +30,22 @@ check() {
   fi
 }
 
-
+while [[ $# -gt 0 ]]
+do
+  case $1 in 
+  --help | -h)
+    print_messege $NC "HELP IS ON THE WAY \n"
+    ;;
+  --version | -v)
+    print_messege $NC "beta \n"
+    ;;
+  --create-service | -c)
+    print_messege $YELLOW "CEATION OF SERVICE CODE GOES HERE \n"
+    ;;
+  *)
+    print_messege $RED "Error: Invalid flag $1 \n "
+    ;;
+  esac
+  shift
+done
+ 
