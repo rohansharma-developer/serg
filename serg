@@ -22,7 +22,7 @@ check() {
    distro=rhel
   elif [[ -e /etc/sources.d ]]; then
     distro=debian
-  elif [[ -e /etc/packman.d ]]; then
+  elif [[ -e /etc/pacman.d ]]; then
     distro=arch
   else
     distro=other
