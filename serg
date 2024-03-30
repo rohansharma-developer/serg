@@ -42,7 +42,7 @@ create-service() {
   # Creating service file
    echo "
    [Unit]
-  Description=$sname
+  Description=$sdesc
   After=$safter
   StartLimitIntervalSec=0
   [Service]
