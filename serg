@@ -54,7 +54,7 @@ create-service() {
 
   [Install]
   WantedBy=$swant
-   " >> /etc/systemd/systemd/$sname.service
+   " >> /etc/systemd/system/$sname.service
 
    sudo systemctl enable --now $sname.service
    sudo systemctl status $sname.service
