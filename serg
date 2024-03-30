@@ -29,6 +29,36 @@ check() {
     # print_messege $YELLOW "Warning: Distro might not be supported \n"
   fi
 }
+create-service() {
+  # Service details input
+   read -p "Name of service: " sname
+   read -p "Description: " sdesc
+   read -p "Start After: " safter
+   read -p "Type: " stype
+   read -p "Auto Restart: (always/no) " srest
+   read -p "Command to execute: " sexec
+   read -p "User to start service: " suser
+   read -p "Wanted by: " swant
+  # Creating service file
+   echo "
+   [Unit]
+  Description=$sname
+  After=$safter
+  StartLimitIntervalSec=0
+  [Service]
+  Type=$stype
+  Restart=$srest
+  RestartSec=1
+  User=$suser
+  ExecStart=$sexec
+
+  [Install]
+  WantedBy=$swant
+   " >> /etc/systemd/systemd/$sname.service
+
+   sudo systemctl enable --now $sname.service
+   sudo systemctl status $sname.service
+}
 
 while [[ $# -gt 0 ]]
 do
@@ -40,7 +70,7 @@ do
     print_messege $NC "beta \n"
     ;;
   --create-service | -c)
-    print_messege $YELLOW "CEATION OF SERVICE CODE GOES HERE \n"
+    
     ;;
   *)
     print_messege $RED "Error: Invalid flag $1 \n "
