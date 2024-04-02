@@ -83,7 +83,13 @@ while [[ $# -gt 0 ]]
 do
   case $1 in 
   --help | -h)
-    print_messege $NC "HELP IS ON THE WAY \n"
+    print_messege $NC "
+    usage: serg <operation>
+    operations:
+            serg {-h --help}
+            serg {-v --version}
+            serg {-c --create-service}
+    "
     ;;
   --version | -v)
     print_messege $NC "beta \n"
