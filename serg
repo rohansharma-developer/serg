@@ -55,6 +55,7 @@ create-service() {
    elif [[ $dir_choice -eq 3 ]]
    then
     $dir = "/etc/systemd/user"
+   fi
 
 
   # Creating service file
