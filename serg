@@ -89,7 +89,7 @@ do
     print_messege $NC "beta \n"
     ;;
   --create-service | -c)
-    
+    create-service
     ;;
   *)
     print_messege $RED "Error: Invalid flag $1 \n "
