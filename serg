@@ -39,6 +39,24 @@ create-service() {
    read -p "Command to execute: " sexec
    read -p "User to start service: " suser
    read -p "Wanted by: " swant
+   print "Select a directory to store the service file: "
+   print "1. /usr/lib/systemd/system"
+   print "2. /etc/systemd/system"
+   print "3. /etc/systemd/user"
+   read -p "Option: " dir_choice
+
+    $dir = ""
+   if [[ $dir_choice -eq 1 ]]
+   then
+    $dir = "/usr/lib/systemd"
+   elif [[ $dir_choice -eq 2 ]]
+   then
+    $dir = "/etc/systemd/system"
+   elif [[ $dir_choice -eq 3 ]]
+   then
+    $dir = "/etc/systemd/user"
+
+
   # Creating service file
    echo "
    [Unit]
@@ -54,7 +72,7 @@ create-service() {
 
   [Install]
   WantedBy=$swant
-   " >> /etc/systemd/system/$sname.service
+   " >> ${dir}/$sname.service
 
    sudo systemctl enable --now $sname.service
    sudo systemctl status $sname.service
